@@ -476,7 +476,7 @@ export const links = [
       {
         name: 'Strategy Design',
         icon: <FiScissors />,
-        link: 'strategydesigncenterhome'
+        link: 'strategydesign'
       },
     ],
   },

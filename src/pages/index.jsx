@@ -1,1 +1,1 @@
-export { default as StrategyDesignCenterHome } from './StrategyDesignCenterHome';
+export { default as StrategyDesign } from './StrategyDesign';
