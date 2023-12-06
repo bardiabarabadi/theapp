@@ -8,6 +8,7 @@ import { StrategyDesign } from './pages';
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
+import Journal from './pages/Journal';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -68,6 +69,7 @@ const App = () => {
                 <Route path="/strategydesign" element={(<StrategyDesign />)} />
                 {/* dashboard  */}
                 <Route path="/" element={(<StrategyDesign />)} />
+                <Route path="/journal" element={(<Journal />)} />
 
 
 
