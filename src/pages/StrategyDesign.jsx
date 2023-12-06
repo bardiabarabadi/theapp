@@ -1,30 +1,14 @@
 import React from 'react';
-import { BsCash, BsCurrencyBitcoin, BsCurrencyDollar, BsGpuCard } from 'react-icons/bs';
 import { FaListCheck } from "react-icons/fa6";
-import { IoExitOutline } from "react-icons/io5";
 import { RxEnter, RxExit } from "react-icons/rx";
-import { IoIosMore } from 'react-icons/io';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-
-
-import { Cart, Chat, Notification, UserProfile } from '../components';
-
-import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
-import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropdownData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
-import product9 from '../data/product9.jpg';
 import { FiPlusCircle } from "react-icons/fi";
-import product8 from '../data/product8.jpg'
+import product8 from '../data/product8.jpg';
 
 import { Header } from '../components';
 import NewStrat from '../components/NewStrat';
 
 
-const DropDown = ({ currentMode }) => (
-  <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
-    <DropDownListComponent id="time" fields={{ text: 'Time', value: 'Id' }} style={{ border: 'none', color: (currentMode === 'Dark') && 'white' }} value="1" dataSource={dropdownData} popupHeight="220px" popupWidth="120px" />
-  </div>
-);
 
 const StrategyDesign = () => {
   const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
@@ -101,8 +85,8 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Setup</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> BTCUSDT</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> 1m-15m</p>
+                    <p className='text-gray-700 dark:text-gray-300'> BTCUSDT</p>
+                    <p className='text-gray-700 dark:text-gray-300'> 1m-15m</p>
                   </div>
                 </div>
 
@@ -120,8 +104,8 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Entry</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> Candlestick Pattern</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> OBV</p>
+                    <p className='text-gray-700 dark:text-gray-300'> Candlestick Pattern</p>
+                    <p className='text-gray-700 dark:text-gray-300'> OBV</p>
                   </div>
                 </div>
 
@@ -139,8 +123,8 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Exit</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> Fix %</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> RSI-10</p>
+                    <p className='text-gray-700 dark:text-gray-300'> Fix %</p>
+                    <p className='text-gray-700 dark:text-gray-300'> RSI-10</p>
                   </div>
                 </div>
 
@@ -206,8 +190,8 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Setup</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> EURUSD</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> 4H-1D</p>
+                    <p className='text-gray-700 dark:text-gray-300'> EURUSD</p>
+                    <p className='text-gray-700 dark:text-gray-300'> 4H-1D</p>
                   </div>
                 </div>
 
@@ -225,8 +209,8 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Entry</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> RSI-14</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> MACD</p>
+                    <p className='text-gray-700 dark:text-gray-300'> RSI-14</p>
+                    <p className='text-gray-700 dark:text-gray-300'> MACD</p>
                   </div>
                 </div>
 
@@ -244,8 +228,8 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Exit</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> Fix %</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> Doji</p>
+                    <p className='text-gray-700 dark:text-gray-300'> Fix %</p>
+                    <p className='text-gray-700 dark:text-gray-300'> Doji</p>
                   </div>
                 </div>
 
@@ -312,8 +296,8 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Setup</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> S&P500</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> 1D</p>
+                    <p className='text-gray-700 dark:text-gray-300'> S&P500</p>
+                    <p className='text-gray-700 dark:text-gray-300'> 1D</p>
                   </div>
                 </div>
 
@@ -331,7 +315,7 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Entry</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> Golden Cross</p>
+                    <p className='text-gray-700 dark:text-gray-300'> Golden Cross</p>
                   </div>
                 </div>
 
@@ -349,7 +333,7 @@ const StrategyDesign = () => {
                   <div className='flex flex-col items-center self-center justify-center mt-4'>
 
                     <p className='text-lg font-semibold dark:text-gray-200'> Exit</p>
-                    <p className= 'text-gray-700 dark:text-gray-300'> Death Cross</p>
+                    <p className='text-gray-700 dark:text-gray-300'> Death Cross</p>
                   </div>
                 </div>
 
