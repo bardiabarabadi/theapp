@@ -43,37 +43,36 @@ const Journal = () => {
 
 
             {/* Trade List */}
-            <div className='flex flex-col w-1/3 ml-2 mr-2'>
+            <div className='flex flex-col w-1/3 ml-2 mr-2 font-bold text-lg'>
 
-              {journalTradeList.map((item) => (
-                <div key={item.id} className='flex flex-row border-2 items-center border-gray-600 dark:border-gray-400 justify-evenly rounded-xl bg-gray-200 dark:bg-gray-700 w-full h-20 mb-2'>
+              {journalTradeList.map((item) => {
+                return (
+                  <div key={item.id} className='flex flex-row border-2 items-center border-gray-600 dark:border-gray-400 justify-evenly rounded-xl bg-gray-200 dark:bg-gray-800 w-full h-20 mb-2'>
+                    <div className='flex dark:text-gray-100 w-1/3 justify-center'>
+                      <h2>{item.date}</h2>
+                    </div>
 
-                  <div className='flex dark:text-gray-100 w-1/3 justify-center'>
-                    <h2>{item.date}</h2>
+                    <div className='flex justify-center w-5/12'>
+                      {item.side === 'buy' ? (
+                        <div className='flex flex-row justify-evenly items-center w-5/12 text-market-green'>
+                          <BiSolidUpArrow />
+                          <p className='font-semibold text-lg'>Buy </p>
+                        </div>
+
+                      ) : (
+                        <div className='flex flex-row justify-evenly items-center w-5/12 text-market-red'>
+                          <BiSolidDownArrow />
+                          <p className='font-semibold text-lg'>Sell </p>
+                        </div>
+                      )}
+                    </div>
+                    <div className='flex justify-start w-3/12'>
+                      <h2 className='dark:text-gray-100'>PnL=</h2>
+                      <h2 className={`${item.wnl === 'l' ? 'text-market-green' : 'text-market-red'} mx-1`}>{item.pnl}</h2>
+                    </div>
                   </div>
-
-                  <div className='flex justify-center w-5/12'>
-                    {item.side === 'buy' ? (
-                      <div className='flex flex-row justify-evenly items-center w-5/12' style={{ color: "#009900" }}>
-                        <BiSolidUpArrow />
-                        <p>Buy </p>
-                      </div>
-
-                    ) : (
-                      <div className='flex flex-row justify-evenly items-center w-5/12' style={{ color: "#EE0000" }}>
-                        <BiSolidDownArrow />
-                        <p>Sell </p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className='flex justify-start w-3/12'>
-                    <h2 className='dark:text-gray-100'>PnL=</h2>
-                    <h2 style={{ color: item.wnl === 'l' ? "#EE0000" : "#009900" }}>{item.pnl}</h2>
-                  </div>
-
-                </div>
-              ))}
+                )
+              })}
 
 
               {/* Add Trade */}
