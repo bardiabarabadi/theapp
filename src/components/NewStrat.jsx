@@ -19,11 +19,7 @@ import { RxEnter, RxExit } from "react-icons/rx";
 import { BsPlusCircleDotted } from "react-icons/bs";
 
 import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-]
+
 const TargetMarketDropDown = ({ currentMode }) => (
     <div className="w-30 border-1 ml-5 border-color px-2 pt-1 rounded-md">
         <DropDownListComponent id="tm" fields={{ text: 'Time', value: 'Id' }} style={{ color: (currentMode === 'Dark') && 'white' }} value="1" dataSource={targetMarkets} popupHeight="220px" popupWidth="180px" />

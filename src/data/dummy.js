@@ -158,6 +158,24 @@ export const targetMarkets = [
   },
 ];
 
+
+export const strategies = [
+  {
+    Id: '1',
+    Time: 'Awesome Swing Strategy',
+  },
+  {
+    Id: '2',
+    Time: 'RTD Scalp',
+  }, {
+    Id: '3',
+    Time: 'Golden/Death Cross',
+  }, {
+    Id: '4',
+    Time: 'Swing Trading Crypto',
+  },
+];
+
 export const exitTypes = [
   {
     Id: '1',

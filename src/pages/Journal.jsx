@@ -2,19 +2,30 @@ import React from 'react';
 
 import { useStateContext } from '../contexts/ContextProvider';
 import { FiPlusCircle } from "react-icons/fi";
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 import { Header } from '../components';
 import chart_dark from '../data/chart_dark.png';
 import chart_light from '../data/chart_light.png';
+import trade_chart_dark from '../data/trade_chart_dark.png';
+import trade_chart_light from '../data/trade_chart_light.png';
 import { journalTradeList } from '../data/dummy';
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import { BsPlusCircleDotted } from 'react-icons/bs';
+import { FaRegSave } from "react-icons/fa";
+import { MdOutlineCancel } from 'react-icons/md';
+import { strategies } from '../data/dummy';
 
 const Journal = () => {
   const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
 
-  const [showNewJournalTrade, setshowNewJournalTrade] = React.useState(false)
-  const onShowNewJournalTrade = () => setshowNewJournalTrade(!showNewJournalTrade)
+  const [showNewJournalTrade, setshowNewJournalTrade] = React.useState(false);
+  const onShowNewJournalTrade = () => setshowNewJournalTrade(!showNewJournalTrade);
+  const StrategyListDropDown = ({ currentMode }) => (
+    <div className="w-full border-1  border-color px-2 rounded-md">
+      <DropDownListComponent id="tm" fields={{ text: 'Time', value: 'Id' }} style={{ 'font-size': '16px', color: (currentMode === 'Dark') && 'white' }} value="1" dataSource={strategies} popupHeight="220px" />
+    </div>
+  );
   return (
 
 
@@ -95,12 +106,69 @@ const Journal = () => {
 
           {/* Individual Trade Title */}
           <div className=' pl-2 h-fit mt-10 '>
-            <Header category="" title="Trade Journal" />
+            <Header category="" title="Trade Details" />
           </div>
 
           {/* Individual Trade Containter */}
-          <div className='flex w-full h-1000 bg-gray-600'>
-            {/* Placeholder */}
+          <div className='flex flex-row w-full h-fit rounded-lg dark:bg-gray-900  border-gray-500 dark:border-gray-50 border-1 p-1'>
+            {/* Trade Chart, notes, rating */}
+            <div className='flex flex-col w-1/3 m-2 mr-0 h-200 rounded-lg'>
+
+              {/* Trade Chart */}
+              <div className='flex w-full'>
+                <img src={currentMode === 'Dark' ? trade_chart_dark : trade_chart_light} className='rounded-lg border-0 border-gray-950 dark:border-gray-50' >
+                </img>
+              </div>
+
+              {/* Trade Notes */}
+              <div className='flex flex-col w-full mt-5'>
+                <label className='dark:text-gray-50 font-semibold text-2xl mb-1'>Notes</label>
+                <textarea rows={5} className='w-full dark:bg-gray-950 rounded-lg p-2 h-fit min-h-100 resize-none' placeholder='Add notes regarding this trade' >
+                </textarea>
+              </div>
+            </div>
+            {/* End of Trade Chart, notes, rating */}
+
+            {/* Trade Details */}
+            <div className='flex flex-col w-2/3 m-2 bg-slate-400 h-200 rounded-lg p-2'>
+              {/* Trade Detail topBar */}
+              <div className='flex flex-row w-full justify-between items-center'>
+                {/* Select Strategy Text */}
+                <div>
+                  <label className='dark:text-gray-50 font-semibold text-2xl mb-1'>Select Strategy: </label>
+                </div>
+
+                {/* Strategy Dropdown */}
+                <div className='flex flex-grow mx-5 mt-1 bg-gray-100'>
+                  <StrategyListDropDown />
+                </div>
+
+                {/* Icons */}
+                <div className='flex flex-row text-3xl'>
+                  <FaRegSave className='mr-1' />
+                  <MdOutlineCancel className='mx-2' />
+                </div>
+              </div>
+
+              {/* Trade Details Sections */}
+              <div>
+
+              </div>
+
+              {/* Trade Rating */}
+              <div>
+
+              </div>
+              {/* Trade Lessons Learnt */}
+              <div>
+
+              </div>
+            </div>
+            {/* End of Trade Details */}
+
+
+
+
           </div>
           {/* Individual Trade Containter */}
 

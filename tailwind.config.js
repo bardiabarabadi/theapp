@@ -47,6 +47,13 @@ module.exports = {
           400: '400px',
           300: '300px',
           200: '200px',
+          100: '100px',
+        },
+        maxHeight: {
+          590: '590px',
+          400: '400px',
+          300: '300px',
+          200: '200px',
         },
         backgroundImage: {
           'hero-pattern':
