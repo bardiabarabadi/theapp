@@ -7,6 +7,10 @@ module.exports = {
         body: ['Open Sans', 'sans-serif'],
       },
       extend: {
+        colors: {
+          'market-green': '#009900',
+          'market-red': '#EE0000',
+        },
         fontSize: {
           14: '14px',
           36: '36px',
@@ -39,6 +43,13 @@ module.exports = {
           1000: '1000px'
         },
         minHeight: {
+          590: '590px',
+          400: '400px',
+          300: '300px',
+          200: '200px',
+          100: '100px',
+        },
+        maxHeight: {
           590: '590px',
           400: '400px',
           300: '300px',

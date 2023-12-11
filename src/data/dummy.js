@@ -158,6 +158,28 @@ export const targetMarkets = [
   },
 ];
 
+
+export const strategies = [
+  {
+    Id: '0',
+    Time: 'No Strategy',
+  },
+  {
+    Id: '1',
+    Time: 'Awesome Swing Strategy',
+  },
+  {
+    Id: '2',
+    Time: 'RTD Scalp',
+  }, {
+    Id: '3',
+    Time: 'Golden/Death Cross',
+  }, {
+    Id: '4',
+    Time: 'Swing Trading Crypto',
+  },
+];
+
 export const exitTypes = [
   {
     Id: '1',
@@ -211,5 +233,40 @@ export const timeFrames = [
   },
 ];
 
+export const journalTradeList = [
 
+  {
+    id: '1',
+    side: 'buy',
+    date: '01/02/2021',
+    pnl: '$230',
+    wnl: 'l'
+  },
+  {
+    id: '2',
+    side: 'sell',
+    date: '19/03/2021',
+    pnl: '$230',
+    wnl: 'w'
+  },
+  {
+    id: '3',
+    side: 'sell',
+    date: '12/04/2021',
+    pnl: '$42',
+    wnl: 'l'
+  },
+  {
+    id: '4',
+    side: 'buy',
+    date: '01/05/2021',
+    pnl: '$112',
+    wnl: 'w'
+  },
+
+
+
+
+
+];
 
