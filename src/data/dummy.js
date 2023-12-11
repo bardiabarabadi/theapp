@@ -161,6 +161,10 @@ export const targetMarkets = [
 
 export const strategies = [
   {
+    Id: '0',
+    Time: 'No Strategy',
+  },
+  {
     Id: '1',
     Time: 'Awesome Swing Strategy',
   },

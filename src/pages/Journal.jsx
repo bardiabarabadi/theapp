@@ -15,6 +15,7 @@ import { BsPlusCircleDotted } from 'react-icons/bs';
 import { FaRegSave } from "react-icons/fa";
 import { MdOutlineCancel } from 'react-icons/md';
 import { strategies } from '../data/dummy';
+import StratDetails from '../components/StratDetails';
 
 const Journal = () => {
   const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
@@ -23,7 +24,7 @@ const Journal = () => {
   const onShowNewJournalTrade = () => setshowNewJournalTrade(!showNewJournalTrade);
   const StrategyListDropDown = ({ currentMode }) => (
     <div className="w-full border-1  border-color px-2 rounded-md">
-      <DropDownListComponent id="tm" fields={{ text: 'Time', value: 'Id' }} style={{ 'font-size': '16px', color: (currentMode === 'Dark') && 'white' }} value="1" dataSource={strategies} popupHeight="220px" />
+      <DropDownListComponent id="tm" fields={{ text: 'Time', value: 'Id' }} style={{ 'font-size': '16px', color: (currentMode === 'Dark') && 'white' }} value="0" dataSource={strategies} popupHeight="220px" />
     </div>
   );
   return (
@@ -130,7 +131,7 @@ const Journal = () => {
             {/* End of Trade Chart, notes, rating */}
 
             {/* Trade Details */}
-            <div className='flex flex-col w-2/3 m-2 bg-slate-400 h-200 rounded-lg p-2'>
+            <div className='flex flex-col w-2/3 m-2 bg-gray-50 dark:bg-gray-950 h-200 rounded-lg p-2'>
               {/* Trade Detail topBar */}
               <div className='flex flex-row w-full justify-between items-center'>
                 {/* Select Strategy Text */}
@@ -139,12 +140,12 @@ const Journal = () => {
                 </div>
 
                 {/* Strategy Dropdown */}
-                <div className='flex flex-grow mx-5 mt-1 bg-gray-100'>
+                <div className='flex flex-grow mx-5 mt-1 bg-gray-200 dark:bg-gray-300 dark:text-gray-50'>
                   <StrategyListDropDown />
                 </div>
 
                 {/* Icons */}
-                <div className='flex flex-row text-3xl'>
+                <div className='flex flex-row text-3xl dark:text-gray-50'>
                   <FaRegSave className='mr-1' />
                   <MdOutlineCancel className='mx-2' />
                 </div>
@@ -152,7 +153,7 @@ const Journal = () => {
 
               {/* Trade Details Sections */}
               <div>
-
+                <StratDetails />
               </div>
 
               {/* Trade Rating */}
