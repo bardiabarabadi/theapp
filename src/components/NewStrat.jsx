@@ -56,7 +56,9 @@ const NewStrat = () => {
 
             {/* Strategy Details */}
             <div>
-                <StratDetails />
+                <StratDetails
+                    editable_={true}
+                />
             </div>
 
         </div >

@@ -31,7 +31,7 @@ const ExitTypeDropDown = ({ currentMode }) => (
 );
 
 
-const StratDetails = () => {
+const StratDetails = ({ editable_ = true }) => {
 
     const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
     const [showCustomSetup, setShowCustomSetup] = React.useState(false)
@@ -41,10 +41,11 @@ const StratDetails = () => {
     const onShowCustomEntry = () => setShowCustomEntry(!showCustomEntry)
     const onShowCustomExit = () => setShowCustomExit(!showCustomExit)
 
+    const editable = editable_;
+
     return (
         < div className='mt-8 w-auto h-fit' >
-
-            <div className='flex flex-row justify-evenly border-spacing-2 p-2  '>
+            <div className='flex flex-row justify-evenly border-spacing-2 p-2 dark:text-gray-50 '>
 
 
                 {/* Setup */}
@@ -69,7 +70,11 @@ const StratDetails = () => {
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
 
                             <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Target Market: </p>
-                            <TargetMarketDropDown className='flex w-1/3' currentMode={currentMode} />
+
+                            {editable ?
+                                <TargetMarketDropDown className='flex w-1/3' currentMode={currentMode} />
+                                :
+                                <div className='flex w-1/2 items-center justify-center'><label className='font-semibold'>BTCUSD</label></div>}
                         </div>
 
 
@@ -83,7 +88,10 @@ const StratDetails = () => {
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
 
                             <p className='flex text-gray-700 w-1/3 dark:text-gray-50'> Time Frame: </p>
-                            <TimeFramesDropDown className="flex  w-1/2" currentMode={currentMode} />
+                            {editable ?
+                                <TimeFramesDropDown className="flex  w-1/2" currentMode={currentMode} />
+                                :
+                                <div className='flex w-1/2 items-center justify-center'><label className='font-semibold'>15m</label></div>}
                         </div>
 
 
@@ -96,10 +104,22 @@ const StratDetails = () => {
 
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
 
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
-                            </div><div className='flex w-1/2  pl-2'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                    :
+                                    <div className='flex w-full'><label className=''>Time of Day:</label></div>}
+
+
+                            </div>
+
+                            <div className='flex w-1/2  pl-2'>
+
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                    :
+                                    <div className='flex w-full justify-center'><label className='font-semibold'>0900-1300</label></div>}
+
                             </div>
                         </div>
 
@@ -109,13 +129,26 @@ const StratDetails = () => {
 
 
                     {/* Setup - Custom #2 */}
-                    {showCustomSetup ? <div className='flex flex-col items-center self-center justify-evenly mt-4 w-5/6'>
+                    {showCustomSetup | (!editable) ? <div className='flex flex-col items-center self-center justify-evenly mt-4 w-5/6'>
 
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
-                            </div><div className='flex w-1/2  pl-2'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
+
+                                    :
+                                    <div className='flex w-full'><label className=''>Day of Week:</label></div>}
+
+
+                            </div>
+
+                            <div className='flex w-1/2  pl-2'>
+
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                    :
+                                    <div className='flex w-full justify-center'><label className='font-semibold'>Tue & Wed</label></div>}
+
                             </div>
                         </div>
 
@@ -165,8 +198,11 @@ const StratDetails = () => {
 
                             <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Risk Per Trade: </p>
                             <div className='flex w-1/2  pl-2'>
-
-                                <NumericTextBoxComponent placeholder="Risk %" format='p2' value={0.01} min={0} max={1} step={0.0001} style={{ fontSize: "16px", 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
+                                {editable ?
+                                    <NumericTextBoxComponent placeholder="Risk %" format='p2' value={0.01} min={0} max={1} step={0.0001} style={{ fontSize: "16px", 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
+                                    :
+                                    <div className='flex w-full items-center justify-center'><label className='font-semibold'>1.50%</label></div>
+                                }
                             </div>
                         </div>
 
@@ -184,7 +220,11 @@ const StratDetails = () => {
 
                             <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Leverage: </p>
                             <div className='flex w-1/2  pl-2'>
-                                <NumericTextBoxComponent placeholder="Leverage" format='0.' value={3} min={0} max={400} step={1} style={{ fontSize: "16px", 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
+                                {editable ?
+                                    <NumericTextBoxComponent placeholder="Leverage" format='0.' value={3} min={0} max={400} step={1} style={{ fontSize: "16px", 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
+                                    :
+                                    <div className='flex w-full items-center justify-center'><label className='font-semibold'>3x</label></div>
+                                }
                             </div>
                         </div>
 
@@ -198,9 +238,22 @@ const StratDetails = () => {
 
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
-                            </div><div className='flex w-1/2  pl-2'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
+
+                                    :
+                                    <div className='flex w-full'><label className=''>Criteria #1:</label></div>}
+
+
+                            </div>
+
+                            <div className='flex w-1/2  pl-2'>
+
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                    :
+                                    <div className='flex w-full justify-center '><label className='font-semibold'>Price &gt; MA(50)</label></div>}
+
                             </div>
                         </div>
 
@@ -210,13 +263,26 @@ const StratDetails = () => {
 
 
                     {/* Entry - Custom #2 */}
-                    {showCustomEntry ? <div className='flex flex-col items-center self-center justify-evenly mt-4 w-5/6'>
+                    {showCustomEntry | (!editable) ? <div className='flex flex-col items-center self-center justify-evenly mt-4 w-5/6'>
 
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
-                            </div><div className='flex w-1/2  pl-2'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
+
+                                    :
+                                    <div className='flex w-full'><label className=''>Criteria #2:</label></div>}
+
+
+                            </div>
+
+                            <div className='flex w-1/2  pl-2'>
+
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                    :
+                                    <div className='flex w-full justify-center '><label className='font-semibold'>RSI &gt; 70</label></div>}
+
                             </div>
                         </div>
 
@@ -259,13 +325,17 @@ const StratDetails = () => {
                     <p className='flex self-center text-xl font-semibold mt-4 dark:text-gray-50'> Exit</p>
 
                     {/* Exit - Exit Type */}
-                    <div className='flex flex-col items-center self-center justify-stretch mt-4 w-5/6 '>
+                    <div className='flex flex-col items-center self-center justify-stretch mt-4 w-5/6'>
 
 
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
-
-                            <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Exit Type: </p>
-                            <ExitTypeDropDown className="flex  w-1/2" currentMode={currentMode} />
+                            <div className='flex text-gray-700 w-1/3  dark:text-gray-50'>
+                                <p> Exit Type: </p></div>
+                            {editable ?
+                                <ExitTypeDropDown className="flex  w-1/2" currentMode={currentMode} />
+                                :
+                                <div className='flex w-1/2 items-center justify-center '><label className='font-semibold'>Trailing Stop @ 2%</label></div>
+                            }
                         </div>
 
 
@@ -296,9 +366,22 @@ const StratDetails = () => {
 
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
-                            </div><div className='flex w-1/2  pl-2'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
+
+                                    :
+                                    <div className='flex w-full'><label className=''>Criteria #1:</label></div>}
+
+
+                            </div>
+
+                            <div className='flex w-1/2  pl-2'>
+
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                    :
+                                    <div className='flex w-full justify-center '><label className='font-semibold'>Price &gt; MA(50)</label></div>}
+
                             </div>
                         </div>
 
@@ -308,13 +391,26 @@ const StratDetails = () => {
 
 
                     {/* Exit - Custom #2 */}
-                    {showCustomExit ? <div className='flex flex-col items-center self-center justify-evenly mt-4 w-5/6'>
+                    {showCustomExit | (!editable)? <div className='flex flex-col items-center self-center justify-evenly mt-4 w-5/6'>
 
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
-                            </div><div className='flex w-1/2  pl-2'>
-                                <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
+
+                                    :
+                                    <div className='flex w-full'><label className=''>Criteria #2:</label></div>}
+
+
+                            </div>
+
+                            <div className='flex w-1/2  pl-2'>
+
+                                {editable ?
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                    :
+                                    <div className='flex w-full justify-center '><label className='font-semibold'>MA(100) &lt; MA(50)</label></div>}
+
                             </div>
                         </div>
 

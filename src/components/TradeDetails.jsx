@@ -73,7 +73,9 @@ const TradeDetails = () => {
 
                     {/* Trade Details Sections */}
                     <div>
-                        <StratDetails />
+                        <StratDetails
+                            editable_={true}
+                        />
                     </div>
 
                     {/* Trade Rating */}
