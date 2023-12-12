@@ -44,7 +44,7 @@ const StratDetails = ({ editable_ = true }) => {
     const editable = editable_;
 
     return (
-        < div className='mt-8 w-auto h-fit' >
+        < div className='mt-3 w-auto h-fit' >
             <div className='flex flex-row justify-evenly border-spacing-2 p-2 dark:text-gray-50 '>
 
 
@@ -159,15 +159,17 @@ const StratDetails = ({ editable_ = true }) => {
 
 
                     {/* Setup - Add Criteria */}
-                    <button className='flex flex-row justify-center items-center text-3xl mt-8 text-blue-700 dark:text-blue-300' onClick={() => onShowCustomSetup()}>
-                        <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed ml-4'></div>
-                        <div className='text-4xl'>
+                    {editable ?
+                        <button className='flex flex-row justify-center items-center text-3xl mt-8 text-blue-700 dark:text-blue-300' onClick={() => onShowCustomSetup()}>
+                            <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed ml-4'></div>
+                            <div className='text-4xl'>
 
-                            <BsPlusCircleDotted />
+                                <BsPlusCircleDotted />
 
-                        </div>
-                        <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed mr-4'></div>
-                    </button>
+                            </div>
+                            <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed mr-4'></div>
+                        </button>
+                        : <div></div>}
                     {/* End of Setup - Add Criteria */}
 
 
@@ -199,7 +201,7 @@ const StratDetails = ({ editable_ = true }) => {
                             <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Risk Per Trade: </p>
                             <div className='flex w-1/2  pl-2'>
                                 {editable ?
-                                    <NumericTextBoxComponent placeholder="Risk %" format='p2' value={0.01} min={0} max={1} step={0.0001} style={{ fontSize: "16px", 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
+                                    <NumericTextBoxComponent placeholder="Risk %" format='p2' value={0.01} min={0} max={1} step={0.0001} style={{ fontSize: "16px",'padding-left': '8px' , 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
                                     :
                                     <div className='flex w-full items-center justify-center'><label className='font-semibold'>1.50%</label></div>
                                 }
@@ -221,7 +223,7 @@ const StratDetails = ({ editable_ = true }) => {
                             <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Leverage: </p>
                             <div className='flex w-1/2  pl-2'>
                                 {editable ?
-                                    <NumericTextBoxComponent placeholder="Leverage" format='0.' value={3} min={0} max={400} step={1} style={{ fontSize: "16px", 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
+                                    <NumericTextBoxComponent placeholder="Leverage" format='0.' value={3} min={0} max={400} step={1} style={{ fontSize: "16px",'padding-left': '8px' ,  'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
                                     :
                                     <div className='flex w-full items-center justify-center'><label className='font-semibold'>3x</label></div>
                                 }
@@ -248,7 +250,6 @@ const StratDetails = ({ editable_ = true }) => {
                             </div>
 
                             <div className='flex w-1/2  pl-2'>
-
                                 {editable ?
                                     <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
                                     :
@@ -293,6 +294,8 @@ const StratDetails = ({ editable_ = true }) => {
 
 
                     {/* Entry - Add Criteria */}
+                    
+                    {editable ?
                     <button className='flex flex-row justify-center items-center text-3xl mt-8 text-blue-700 dark:text-blue-300' onClick={() => onShowCustomEntry()}>
                         <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed ml-4'></div>
                         <div className='text-4xl'>
@@ -302,6 +305,7 @@ const StratDetails = ({ editable_ = true }) => {
                         </div>
                         <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed mr-4'></div>
                     </button>
+                    :<></>}
                     {/* End of Entry - Add Criteria */}
 
 
@@ -391,7 +395,7 @@ const StratDetails = ({ editable_ = true }) => {
 
 
                     {/* Exit - Custom #2 */}
-                    {showCustomExit | (!editable)? <div className='flex flex-col items-center self-center justify-evenly mt-4 w-5/6'>
+                    {showCustomExit | (!editable) ? <div className='flex flex-col items-center self-center justify-evenly mt-4 w-5/6'>
 
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
@@ -421,6 +425,8 @@ const StratDetails = ({ editable_ = true }) => {
 
 
                     {/* Exit - Add Criteria */}
+                    
+                    {editable ?
                     <button className='flex flex-row justify-center items-center text-3xl mt-8 text-blue-700 dark:text-blue-300' onClick={() => onShowCustomExit()}>
                         <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed ml-4'></div>
                         <div className='text-4xl'>
@@ -430,6 +436,7 @@ const StratDetails = ({ editable_ = true }) => {
                         </div>
                         <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed mr-4'></div>
                     </button>
+                    :<></>}
                     {/* End of Exit - Add Criteria */}
 
 

@@ -162,21 +162,21 @@ export const targetMarkets = [
 export const strategies = [
   {
     Id: '0',
-    Time: 'No Strategy',
+    name: 'No Strategy',
   },
   {
     Id: '1',
-    Time: 'Awesome Swing Strategy',
+    name: 'Awesome Swing Strategy',
   },
   {
     Id: '2',
-    Time: 'RTD Scalp',
+    name: 'RTD Scalp',
   }, {
     Id: '3',
-    Time: 'Golden/Death Cross',
+    name: 'Golden/Death Cross',
   }, {
     Id: '4',
-    Time: 'Swing Trading Crypto',
+    name: 'Swing Trading Crypto',
   },
 ];
 
