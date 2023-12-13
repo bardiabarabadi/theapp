@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import StratDetails from '../components/StratDetails';
 import StarRating from '../components/StarRating.jsx';
@@ -15,16 +15,15 @@ import trade_chart_light from '../data/trade_chart_light.png';
 import { FiPlusCircle } from "react-icons/fi";
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
-const StrategyListDropDown = ({ currentMode }) => (
-    <div className="w-full border-1  border-color px-2 rounded-md">
-        <DropDownListComponent id="tm" fields={{ text: 'Time', value: 'Id' }} style={{ 'font-size': '16px', color: (currentMode === 'Dark') && 'white' }} value="0" dataSource={strategies} popupHeight="220px" />
-    </div>
-);
+
+
 
 
 const TradeDetails = () => {
 
-    const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
+    const { currentColor, currentMode, newStrat, setNewStrat,showNewTradeDetail, setShowNewTradeDetail } = useStateContext();
+    const [selectedStrat, setSelectedStrat] = useState('Ns');
+
 
     return (
         <div>
@@ -33,7 +32,7 @@ const TradeDetails = () => {
             </div>
             <div className='flex flex-row w-full h-fit rounded-lg dark:bg-gray-900  border-gray-500 dark:border-gray-50 border-1 p-1'>
                 {/* Trade Chart, notes, rating */}
-                <div className='flex flex-col w-1/3 m-2 mr-0 h-200 rounded-lg'>
+                <div className='flex flex-col w-1/3 m-2  bg-gray-50 dark:bg-gray-950 h-200 rounded-lg p-2'>
 
                     {/* Trade Chart */}
                     <div className='flex w-full'>
@@ -42,9 +41,9 @@ const TradeDetails = () => {
                     </div>
 
                     {/* Trade Notes */}
-                    <div className='flex flex-col w-full mt-5'>
+                    <div className='flex flex-col w-full mt-5 h-full'>
                         <label className='dark:text-gray-50 font-semibold text-2xl mb-1'>Notes</label>
-                        <textarea rows={5} className='w-full dark:bg-gray-950 rounded-lg p-2 h-fit min-h-100 resize-none border-2 border-gray-300 dark:border-gray-700' placeholder='Add notes regarding this trade' >
+                        <textarea rows={5} className='w-full dark:bg-gray-950 rounded-lg p-2 h-full min-h-100 resize-none border-2 border-gray-300 dark:border-gray-700' placeholder='Add notes regarding this trade' >
                         </textarea>
                     </div>
                 </div>
@@ -53,27 +52,61 @@ const TradeDetails = () => {
                 {/* Trade Details */}
                 <div className='flex flex-col w-2/3 m-2 bg-gray-50 dark:bg-gray-950 h-200 rounded-lg p-2'>
                     {/* Trade Detail topBar */}
-                    <div className='flex flex-row w-full justify-between items-center'>
+                    <div className='flex flex-row w-full justify-between items-center border-b-2 pb-5'>
                         {/* Select Strategy Text */}
                         <div>
                             <label className='dark:text-gray-50 font-semibold text-2xl mb-1'>Select Strategy: </label>
                         </div>
 
                         {/* Strategy Dropdown */}
-                        <div className='flex flex-grow mx-5 mt-1 bg-gray-200 dark:bg-gray-300 dark:text-gray-50'>
-                            <StrategyListDropDown />
+                        <div className='flex flex-grow mx-5 mt-1 bg-gray-200 dark:bg-gray-700 dark:text-gray-50'>
+
+                            <select className="w-full text-lg border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[2].Id} onChange={e => setSelectedStrat(e.target.value)}>
+
+                                {strategies.map((item) => {
+                                    return (
+
+                                        <option value={item.Id}> {item.name}</option>
+                                    )
+                                })}
+
+                            </select>
                         </div>
 
                         {/* Icons */}
-                        <div className='flex flex-row text-3xl dark:text-gray-50'>
+                        <div className='flex flex-row text-3xl dark:text-gray-50 '>
                             <FaRegSave className='mr-1' />
-                            <MdOutlineCancel className='mx-2' />
+                            <button onClick={() => setShowNewTradeDetail(!showNewTradeDetail)}><MdOutlineCancel className='mx-2' /></button>
                         </div>
                     </div>
 
+
                     {/* Trade Details Sections */}
-                    <div>
-                        <StratDetails />
+                    <div className="mt-5">
+                        {selectedStrat === "0" ?
+                            <div className=" border-b-2 pb-5">
+
+                                <label className="dark:text-gray-50 font-semibold text-2xl">Trade Outcome:</label>
+                                <StratDetails
+                                    editable_={true}
+                                />
+                            </div>
+                            :
+                            <div>
+                                <div className=" border-b-2 pb-5">
+                                    <label className="dark:text-gray-50 font-semibold text-2xl">Strategy Criteria:</label>
+                                    <StratDetails
+                                        editable_={false}
+                                    />
+                                </div>
+                                <div className=" border-b-2 pb-5 mt-4">
+                                    <label className="dark:text-gray-50 font-semibold text-2xl">Trade Outcome:</label>
+                                    <StratDetails
+                                        editable_={true}
+                                    />
+                                </div>
+                            </div>
+                        }
                     </div>
 
                     {/* Trade Rating */}
@@ -85,7 +118,7 @@ const TradeDetails = () => {
                     </div>
                     {/* Trade Lessons Learnt */}
                     <div>
-                        <textarea rows={5} className='w-full dark:bg-gray-950 rounded-lg mt-2 p-2 h-fit min-h-100 resize-none border-2 border-gray-300 dark:border-gray-700' placeholder='What lessons did you learn?' >
+                        <textarea rows={5} className='w-full dark:bg-gray-950 rounded-lg mt-2 p-2 h-fit min-h-100 resize-none border-2 border-gray-300 dark:border-gray-700' placeholder={selectedStrat === "0" ?'What lessons did you learn?':'What lessons did you learn? How did your trade differ from the strategy?'} >
                         </textarea>
                     </div>
                 </div>

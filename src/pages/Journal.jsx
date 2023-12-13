@@ -10,9 +10,8 @@ import { BsPlusCircleDotted } from 'react-icons/bs';
 import TradeDetails from '../components/TradeDetails';
 
 const Journal = () => {
-  const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
+  const { currentColor, currentMode, newStrat, setNewStrat, showNewTradeDetail, setShowNewTradeDetail } = useStateContext();
 
-  const [showNewTradeDetail, setShowNewTradeDetail] = React.useState(false);
   const onShowNewTradeDetail = () => setShowNewTradeDetail(!showNewTradeDetail);
 
   return (
