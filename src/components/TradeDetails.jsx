@@ -22,7 +22,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 const TradeDetails = () => {
 
     const { currentColor, currentMode, newStrat, setNewStrat,showNewTradeDetail, setShowNewTradeDetail } = useStateContext();
-    const [selectedStrat, setSelectedStrat] = useState('Ns');
+    const [selectedStrat, setSelectedStrat] = useState(1);
 
 
     return (
@@ -61,7 +61,7 @@ const TradeDetails = () => {
                         {/* Strategy Dropdown */}
                         <div className='flex flex-grow mx-5 mt-1 bg-gray-200 dark:bg-gray-700 dark:text-gray-50'>
 
-                            <select className="w-full text-lg border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[2].Id} onChange={e => setSelectedStrat(e.target.value)}>
+                            <select className="w-full text-lg border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[2].Id} onChange={e => setSelectedStrat(e.target.selectedIndex)}>
 
                                 {strategies.map((item) => {
                                     return (
@@ -83,7 +83,7 @@ const TradeDetails = () => {
 
                     {/* Trade Details Sections */}
                     <div className="mt-5">
-                        {selectedStrat === "0" ?
+                        {selectedStrat === 0 ?
                             <div className=" border-b-2 pb-5">
 
                                 <label className="dark:text-gray-50 font-semibold text-2xl">Trade Outcome:</label>
@@ -97,6 +97,7 @@ const TradeDetails = () => {
                                     <label className="dark:text-gray-50 font-semibold text-2xl">Strategy Criteria:</label>
                                     <StratDetails
                                         editable_={false}
+                                        selectedStrat_={parseInt(selectedStrat)} 
                                     />
                                 </div>
                                 <div className=" border-b-2 pb-5 mt-4">
