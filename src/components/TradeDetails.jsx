@@ -21,7 +21,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 const TradeDetails = () => {
 
-    const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
+    const { currentColor, currentMode, newStrat, setNewStrat,showNewTradeDetail, setShowNewTradeDetail } = useStateContext();
     const [selectedStrat, setSelectedStrat] = useState('Ns');
 
 
@@ -59,9 +59,9 @@ const TradeDetails = () => {
                         </div>
 
                         {/* Strategy Dropdown */}
-                        <div className='flex flex-grow mx-5 mt-1 bg-gray-200 dark:bg-gray-300 dark:text-gray-50'>
+                        <div className='flex flex-grow mx-5 mt-1 bg-gray-200 dark:bg-gray-700 dark:text-gray-50'>
 
-                            <select className="w-full text-lg border-1  border-color px-2 py-1 rounded-md" defaultValue={strategies[2].Id} onChange={e => setSelectedStrat(e.target.value)}>
+                            <select className="w-full text-lg border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[2].Id} onChange={e => setSelectedStrat(e.target.value)}>
 
                                 {strategies.map((item) => {
                                     return (
@@ -74,9 +74,9 @@ const TradeDetails = () => {
                         </div>
 
                         {/* Icons */}
-                        <div className='flex flex-row text-3xl dark:text-gray-50'>
+                        <div className='flex flex-row text-3xl dark:text-gray-50 '>
                             <FaRegSave className='mr-1' />
-                            <MdOutlineCancel className='mx-2' />
+                            <button onClick={() => setShowNewTradeDetail(!showNewTradeDetail)}><MdOutlineCancel className='mx-2' /></button>
                         </div>
                     </div>
 
