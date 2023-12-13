@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiCreditCard, FiScissors } from 'react-icons/fi';
 import { BsCurrencyDollar, BsShield } from 'react-icons/bs';
+import { FaClockRotateLeft } from "react-icons/fa6";
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
@@ -26,6 +27,11 @@ export const links = [
         name: 'Trade Journal',
         icon: <BsJournalMedical />,
         link: 'journal'
+      },
+      {
+        name: 'Time Machine',
+        icon: <FaClockRotateLeft />,
+        link: 'timemachine'
       },
     ],
   },
