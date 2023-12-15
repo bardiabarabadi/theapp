@@ -1,12 +1,11 @@
-// TODO: Update to be new Time Machine Panel
 import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { useStateContext } from '../contexts/ContextProvider';
 import product8 from '../data/product8.jpg';
 import StratDetails from './StratDetails'
 
-const NewTimeMachine = () => {
-    const { currentColor, currentMode, setNewTimeMachine, newTimeMachine } = useStateContext();
+const NewRimeMachine = ({editable_ = false, selectedStrat = 1}) => {
+    const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
 
     const [showCustomSetup, setShowCustomSetup] = React.useState(false)
     const [showCustomEntry, setShowCustomEntry] = React.useState(false)
@@ -15,7 +14,8 @@ const NewTimeMachine = () => {
     const onShowCustomEntry = () => setShowCustomEntry(!showCustomEntry)
     const onShowCustomExit = () => setShowCustomExit(!showCustomExit)
 
-    const handleNewTimeMachine = () => setNewTimeMachine(!newTimeMachine);
+    const handleNewStrat = () => setNewStrat(!newStrat);
+
 
     return (
         <div className="flex bg-white dark:text-gray-600 dark:bg-secondary-dark-bg h-fit flex-col  rounded-3xl w-5/6 p-8 pt-9 mt-3  bg-no-repeat bg-cover bg-center hover:drop-shadow-xl border-8 border-gray-400 dark:border-gray-600" style={{ zIndex: '2000', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -41,7 +41,7 @@ const NewTimeMachine = () => {
                 </div >
                 {/* close button */}
                 <div className='flex justify-self-end w-full justify-end self-start'>
-                    <button className='text-4xl hover:drop-shadow-lg' type='button' onClick={() => handleNewTimeMachine()}>
+                    <button className='text-4xl hover:drop-shadow-lg' type='button' onClick={() => handleNewStrat()}>
                         <MdOutlineCancel />
                     </button>
                 </div>
@@ -49,16 +49,14 @@ const NewTimeMachine = () => {
 
             {/* Strategy Summary */}
             < div className='mt-8 w-auto ml-5 mr-5' >
-
-
                 <input className='flex w-full text-lg text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Description'></input>
-                {/* <TextBoxComponent className="e-input" type="text" placeholder="Description" style={{ fontSize: "20px" }} floatLabelType='Always' /> */}
             </div >
 
             {/* Strategy Details */}
             <div>
                 <StratDetails
-                    editable_={true}
+                    editable_={editable_}
+                    selectedStrat_={selectedStrat}
                 />
             </div>
 
@@ -69,4 +67,4 @@ const NewTimeMachine = () => {
     );
 };
 
-export default NewTimeMachine;
+export default NewRimeMachine;

@@ -165,6 +165,51 @@ export const targetMarkets = [
   },
 ];
 
+export const timeMachines = [
+{
+  Id: '0',
+  name: '',
+  avatar: product8,
+  description: '',
+  start_time: '',
+  end_time: '',
+  initial_capital: '',
+  max_leverage: '',
+  playback_speed: '',
+},
+{
+  Id: '1',
+  name: 'Great Financial Crisis',
+  avatar: product8,
+  description: 'This will be the description of the time machine written by the user. The user will detail why they created this time machine, if it is representing a specific time in the financial history, and the purposes of this time machine, i.e. testing a specific strategy.',
+  start_time: '01-Jan-2007',
+  end_time: '30-Dec-2009',
+  initial_capital: '$100,000',
+  max_leverage: '2x',
+  playback_speed: '1:3600',
+},{
+  Id: '2',
+  name: 'Crypto China Miner\'s Crash',
+  avatar: product8,
+  description: 'This will be the description of the time machine written by the user. The user will detail why they created this time machine, if it is representing a specific time in the financial history, and the purposes of this time machine, i.e. testing a specific strategy.',
+  start_time: '14-Apr-2021',
+  end_time: '06-Sep-2021',
+  initial_capital: '$1,000',
+  max_leverage: '125x',
+  playback_speed: '1:1',
+},{
+  Id: '3',
+  name: 'COVID Crash',
+  avatar: product8,
+  description: 'This will be the description of the time machine written by the user. The user will detail why they created this time machine, if it is representing a specific time in the financial history, and the purposes of this time machine, i.e. testing a specific strategy.',
+  start_time: '23-Jan-2020',
+  end_time: '11-May-2020',
+  initial_capital: '$10,000',
+  max_leverage: '5x',
+  playback_speed: '1:1',
+},
+]
+
 
 export const strategies = [
   {
