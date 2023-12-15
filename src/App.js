@@ -68,7 +68,7 @@ const App = () => {
               <Routes>
                 {/* The App  */}
                 <Route path="/strategydesign" element={(<StrategyDesign />)} />
-                {/* dashboard  */}
+                
                 <Route path="/" element={(<StrategyDesign />)} />
                 <Route path="/journal" element={(<Journal />)} />
                 <Route path="/timemachine" element={(<TimeMachine />)} />
