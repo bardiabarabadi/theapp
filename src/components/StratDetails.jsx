@@ -75,7 +75,16 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Target Market: </p>
 
                             {editable ?
-                                <TargetMarketDropDown className='flex w-1/3' currentMode={currentMode} />
+                                <select className="w-1/2 text-xl border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[0].Id}>
+
+                                    {targetMarkets.map((item) => {
+                                        return (
+
+                                            <option value={item.Id}> {item.Time}</option>
+                                        )
+                                    })}
+
+                                </select>
                                 :
                                 <div className='flex w-1/2 items-center justify-center'><label className='font-semibold'>{strategies[selectedStrat].setup_target_market}</label></div>}
                         </div>
@@ -91,7 +100,16 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
 
                             <p className='flex text-gray-700 w-1/3 dark:text-gray-50'> Time Frame: </p>
                             {editable ?
-                                <TimeFramesDropDown className="flex  w-1/2" currentMode={currentMode} />
+                                <select className="w-1/2 text-xl border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[0].Id}>
+
+                                    {timeFrames.map((item) => {
+                                        return (
+
+                                            <option value={item.Id}> {item.Time}</option>
+                                        )
+                                    })}
+
+                                </select>
                                 :
                                 <div className='flex w-1/2 items-center justify-center'><label className='font-semibold'>{strategies[selectedStrat].setup_time_frame}</label></div>}
                         </div>
@@ -107,7 +125,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #1'></input>
 
                                     :
                                     <div className='flex w-full'><label className=''>Time of Day:</label></div>}
@@ -118,7 +136,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <div className='flex w-1/2  pl-2'>
 
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #1 Value'></input>
                                     :
                                     <div className='flex w-full justify-center'><label className='font-semibold'>{strategies[selectedStrat].setup_time_of_day}</label></div>}
 
@@ -136,7 +154,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #2'></input>
 
                                     :
                                     <div className='flex w-full'><label className=''>Day of Week:</label></div>}
@@ -147,7 +165,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <div className='flex w-1/2  pl-2'>
 
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #2 Value'></input>
                                     :
                                     <div className='flex w-full justify-center'><label className='font-semibold'>{strategies[selectedStrat].setup_day_of_week}</label></div>}
 
@@ -203,7 +221,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Risk Per Trade: </p>
                             <div className='flex w-1/2  pl-2'>
                                 {editable ?
-                                    <NumericTextBoxComponent placeholder="Risk %" format='p2' value={0.01} min={0} max={1} step={0.0001} style={{ fontSize: "16px",'padding-left': '8px' , 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
+                                    <NumericTextBoxComponent placeholder="Risk %" format='p2' value={0.01} min={0} max={1} step={0.0001} style={{ fontSize: "16px", 'padding-left': '8px', 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
                                     :
                                     <div className='flex w-full items-center justify-center'><label className='font-semibold'>{strategies[selectedStrat].entry_risk}</label></div>
                                 }
@@ -225,7 +243,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Leverage: </p>
                             <div className='flex w-1/2  pl-2'>
                                 {editable ?
-                                    <NumericTextBoxComponent placeholder="Leverage" format='0.' value={3} min={0} max={400} step={1} style={{ fontSize: "16px",'padding-left': '8px' ,  'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
+                                    <NumericTextBoxComponent placeholder="Leverage" format='0.' value={3} min={0} max={400} step={1} style={{ fontSize: "16px", 'padding-left': '8px', 'background-color': currentMode === 'Dark' ? '#555555' : 'rgba(255, 255, 255,1)', 'color': currentMode === 'Dark' ? '#FFFFFF' : '#010101' }} />
                                     :
                                     <div className='flex w-full items-center justify-center'><label className='font-semibold'>{strategies[selectedStrat].entry_leverage}</label></div>
                                 }
@@ -243,7 +261,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #1'></input>
 
                                     :
                                     <div className='flex w-full'><label className=''>Criteria #1:</label></div>}
@@ -253,7 +271,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
 
                             <div className='flex w-1/2  pl-2'>
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #1 Value'></input>
                                     :
                                     <div className='flex w-full justify-center '><label className='font-semibold'>{strategies[selectedStrat].entry_1}</label></div>}
 
@@ -271,7 +289,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #2'></input>
 
                                     :
                                     <div className='flex w-full'><label className=''>Criteria #2:</label></div>}
@@ -282,7 +300,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <div className='flex w-1/2  pl-2'>
 
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #2 Value'></input>
                                     :
                                     <div className='flex w-full justify-center '><label className='font-semibold'>{strategies[selectedStrat].entry_2}</label></div>}
 
@@ -296,18 +314,18 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
 
 
                     {/* Entry - Add Criteria */}
-                    
+
                     {editable ?
-                    <button className='flex flex-row justify-center items-center text-3xl mt-8 text-blue-700 dark:text-blue-300' onClick={() => onShowCustomEntry()}>
-                        <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed ml-4'></div>
-                        <div className='text-4xl'>
+                        <button className='flex flex-row justify-center items-center text-3xl mt-8 text-blue-700 dark:text-blue-300' onClick={() => onShowCustomEntry()}>
+                            <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed ml-4'></div>
+                            <div className='text-4xl'>
 
-                            <BsPlusCircleDotted />
+                                <BsPlusCircleDotted />
 
-                        </div>
-                        <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed mr-4'></div>
-                    </button>
-                    :<></>}
+                            </div>
+                            <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed mr-4'></div>
+                        </button>
+                        : <></>}
                     {/* End of Entry - Add Criteria */}
 
 
@@ -338,7 +356,16 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <div className='flex text-gray-700 w-1/3  dark:text-gray-50'>
                                 <p> Exit Type: </p></div>
                             {editable ?
-                                <ExitTypeDropDown className="flex  w-1/2" currentMode={currentMode} />
+                                <select className="w-1/2 text-xl border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[0].Id}>
+
+                                    {exitTypes.map((item) => {
+                                        return (
+
+                                            <option value={item.Id}> {item.Time}</option>
+                                        )
+                                    })}
+
+                                </select>
                                 :
                                 <div className='flex w-1/2 items-center justify-center '><label className='font-semibold'>{strategies[selectedStrat].exit_type}</label></div>
                             }
@@ -355,7 +382,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #1'></input>
 
                                     :
                                     <div className='flex w-full'><label className=''>Criteria #1:</label></div>}
@@ -366,7 +393,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <div className='flex w-1/2  pl-2'>
 
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #1 Value'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #1 Value'></input>
                                     :
                                     <div className='flex w-full justify-center '><label className='font-semibold'>{strategies[selectedStrat].exit_1}</label></div>}
 
@@ -384,7 +411,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                         <div className='flex flex-row justify-between mt-2 items-center w-full'>
                             <div className='flex w-1/3'>
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #2'></input>
 
                                     :
                                     <div className='flex w-full'><label className=''>Criteria #2:</label></div>}
@@ -395,7 +422,7 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
                             <div className='flex w-1/2  pl-2'>
 
                                 {editable ?
-                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Criteria #2 Value'></input>
+                                    <input className='flex w-full text-md text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-gray-900 border-b-2' type='text' placeholder='Criteria #2 Value'></input>
                                     :
                                     <div className='flex w-full justify-center '><label className='font-semibold'>{strategies[selectedStrat].exit_2}</label></div>}
 
@@ -409,18 +436,18 @@ const StratDetails = ({ editable_ = true, selectedStrat_ = 2 }) => {
 
 
                     {/* Exit - Add Criteria */}
-                    
+
                     {editable ?
-                    <button className='flex flex-row justify-center items-center text-3xl mt-8 text-blue-700 dark:text-blue-300' onClick={() => onShowCustomExit()}>
-                        <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed ml-4'></div>
-                        <div className='text-4xl'>
+                        <button className='flex flex-row justify-center items-center text-3xl mt-8 text-blue-700 dark:text-blue-300' onClick={() => onShowCustomExit()}>
+                            <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed ml-4'></div>
+                            <div className='text-4xl'>
 
-                            <BsPlusCircleDotted />
+                                <BsPlusCircleDotted />
 
-                        </div>
-                        <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed mr-4'></div>
-                    </button>
-                    :<></>}
+                            </div>
+                            <div className='flex w-full border-1 border-blue-700 dark:border-blue-300 border-dashed mr-4'></div>
+                        </button>
+                        : <></>}
                     {/* End of Exit - Add Criteria */}
 
 

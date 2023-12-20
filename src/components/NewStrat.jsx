@@ -3,8 +3,9 @@ import { MdOutlineCancel } from 'react-icons/md';
 import { useStateContext } from '../contexts/ContextProvider';
 import product8 from '../data/product8.jpg';
 import StratDetails from './StratDetails'
+import { strategies } from '../data/dummy';
 
-const NewStrat = ({editable_ = false, selectedStrat = 1}) => {
+const NewStrat = ({ editable_ = false, selectedStrat = 1 }) => {
     const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
 
     const [showCustomSetup, setShowCustomSetup] = React.useState(false)
@@ -20,7 +21,7 @@ const NewStrat = ({editable_ = false, selectedStrat = 1}) => {
     return (
         <div className="flex bg-white dark:text-gray-600 dark:bg-secondary-dark-bg h-fit flex-col  rounded-3xl w-5/6 p-8 pt-9 mt-3  bg-no-repeat bg-cover bg-center hover:drop-shadow-xl border-8 border-gray-400 dark:border-gray-600" style={{ zIndex: '2000', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
             <div className='flex flex-row justify-normal h-fit'>
-                < div className="flex flex-row justify-start items-center h-fit" >
+                < div className="flex flex-row justify-start items-center h-fit w-full" >
 
                     {/* Strategy Avatar */}
                     < div className='rounded-full w-20 items-start justify-center h-20 m-2' >
@@ -33,8 +34,15 @@ const NewStrat = ({editable_ = false, selectedStrat = 1}) => {
 
 
                     {/* Strategy Title */}
-                    <div className='flex mb-1 items-center self-center'>
-                        <input className='flex text-4xl text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Strategy Name'></input>
+                    <div className='flex mb-1 items-center self-center w-full'>
+                        {editable_ ?
+                            <input className='flex text-4xl text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Strategy Name'></input>
+
+                            :
+                            <label className='flex w-full text-4xl text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg pl-4 '>
+                                {strategies[selectedStrat].name}
+                            </label>
+                        }
                     </div>
 
 
@@ -49,7 +57,15 @@ const NewStrat = ({editable_ = false, selectedStrat = 1}) => {
 
             {/* Strategy Summary */}
             < div className='mt-8 w-auto ml-5 mr-5' >
-                <input className='flex w-full text-lg text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Description'></input>
+                {editable_ ?
+                    <input className='flex w-full text-lg text-gray-800 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg border-b-2' type='text' placeholder='Description'></input>
+
+                    :
+                    <label className='flex w-full text-lg text-gray-600 placeholder-gray-400 dark:text-gray-200 dark:placeholder-gray-400 dark:bg-secondary-dark-bg'>
+                        {strategies[selectedStrat].description}
+                    </label>
+                }
+
             </div >
 
             {/* Strategy Details */}
