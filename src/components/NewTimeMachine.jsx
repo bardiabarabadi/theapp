@@ -5,6 +5,10 @@ import product8 from '../data/product8.jpg';
 import StratDetails from './StratDetails'
 import TimeMachineDetails from './TimeMachineDetails';
 import { strategies } from '../data/dummy';
+import { useNavigate } from "react-router-dom";
+
+
+
 
 const NewRimeMachine = ({ editable_ = false, selectedStrat = 1 }) => {
     const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
@@ -18,6 +22,12 @@ const NewRimeMachine = ({ editable_ = false, selectedStrat = 1 }) => {
 
     const handleNewStrat = () => setNewStrat(!newStrat);
 
+    const navigate = useNavigate();
+
+    const navigateToTimeMachine = () => {
+        handleNewStrat();
+        navigate("/timemachinepanel")
+    }
 
     return (
         <div className="flex bg-white dark:text-gray-600 dark:bg-secondary-dark-bg h-fit flex-col  rounded-3xl w-5/6 p-8 pt-9 mt-3  bg-no-repeat bg-cover bg-center hover:drop-shadow-xl border-8 border-gray-400 dark:border-gray-600" style={{ zIndex: '2000', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -74,6 +84,33 @@ const NewRimeMachine = ({ editable_ = false, selectedStrat = 1 }) => {
                     editable_={editable_}
                     selectedStrat_={selectedStrat}
                 />
+            </div>
+
+
+            <div className='flex justify-end'>
+                <div className='flex justify-self-end w-1/6 mt-4 mr-4 text-xl font-bold'>
+
+                    {editable_ ?
+                        <button
+                            type="button"
+                            onClick={() => { navigateToTimeMachine() }}
+                            style={{ backgroundColor: currentColor, color: "white", borderRadius: "10px" }}
+                            className={`p-3 w-full hover:drop-shadow-xl}`}
+                        >
+                            {"Start"}
+                        </button>
+                        :
+                        <button
+                            type="button"
+                            onClick={() => { navigateToTimeMachine() }}
+                            style={{ backgroundColor: currentColor, color: "white", borderRadius: "10px" }}
+                            className={`p-3 w-full hover:drop-shadow-xl}`}
+                        >
+                            {"Resume"}
+                        </button>
+                    }
+
+                </div>
             </div>
 
         </div >

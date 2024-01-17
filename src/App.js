@@ -10,6 +10,7 @@ import './App.css';
 import { useStateContext } from './contexts/ContextProvider';
 import Journal from './pages/Journal';
 import TimeMachine from './pages/TimeMachine';
+import TimeMachinePanel from './pages/TimeMachinePanel';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -72,6 +73,7 @@ const App = () => {
                 <Route path="/" element={(<StrategyDesign />)} />
                 <Route path="/journal" element={(<Journal />)} />
                 <Route path="/timemachine" element={(<TimeMachine />)} />
+                <Route path="/timemachinepanel" element={(<TimeMachinePanel />)} />
 
 
 
