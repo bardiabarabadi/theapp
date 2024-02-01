@@ -21,15 +21,12 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 const TradeDetails = () => {
 
-    const { currentColor, currentMode, newStrat, setNewStrat,showNewTradeDetail, setShowNewTradeDetail } = useStateContext();
-    const [selectedStrat, setSelectedStrat] = useState(1);
+    const { currentColor, currentMode, newStrat, setNewStrat,showNewTradeDetail, setShowNewTradeDetail, currentStrat, setCurrentStrat } = useStateContext();
+
 
 
     return (
         <div>
-            <div className=' pl-2 h-fit mt-10 '>
-                <Header category="" title="Trade Details" />
-            </div>
             <div className='flex flex-row w-full h-fit rounded-lg dark:bg-gray-900  border-gray-500 dark:border-gray-50 border-1 p-1'>
                 {/* Trade Chart, notes, rating */}
                 <div className='flex flex-col w-1/3 m-2  bg-gray-50 dark:bg-gray-950 h-200 rounded-lg p-2'>
@@ -61,7 +58,7 @@ const TradeDetails = () => {
                         {/* Strategy Dropdown */}
                         <div className='flex flex-grow mx-5 mt-1 bg-gray-200 dark:bg-gray-700 dark:text-gray-50'>
 
-                            <select className="w-full text-lg border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[2].Id} onChange={e => setSelectedStrat(e.target.selectedIndex)}>
+                            <select className="w-full text-lg border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[currentStrat].Id} onChange={e => setCurrentStrat(e.target.selectedIndex)}>
 
                                 {strategies.map((item) => {
                                     return (
@@ -83,7 +80,7 @@ const TradeDetails = () => {
 
                     {/* Trade Details Sections */}
                     <div className="mt-5">
-                        {selectedStrat === 0 ?
+                        {currentStrat === 0 ?
                             <div className=" border-b-2 pb-5">
 
                                 <label className="dark:text-gray-50 font-semibold text-2xl">Trade Outcome:</label>
@@ -97,7 +94,7 @@ const TradeDetails = () => {
                                     <label className="dark:text-gray-50 font-semibold text-2xl">Strategy Criteria:</label>
                                     <StratDetails
                                         editable_={false}
-                                        selectedStrat_={parseInt(selectedStrat)} 
+                                        selectedStrat_={currentStrat} 
                                     />
                                 </div>
                                 <div className=" border-b-2 pb-5 mt-4">
@@ -119,7 +116,7 @@ const TradeDetails = () => {
                     </div>
                     {/* Trade Lessons Learnt */}
                     <div>
-                        <textarea rows={5} className='w-full dark:bg-gray-950 rounded-lg mt-2 p-2 h-fit min-h-100 resize-none border-2 border-gray-300 dark:border-gray-700' placeholder={selectedStrat === "0" ?'What lessons did you learn?':'What lessons did you learn? How did your trade differ from the strategy?'} >
+                        <textarea rows={5} className='w-full dark:bg-gray-950 rounded-lg mt-2 p-2 h-fit min-h-100 resize-none border-2 border-gray-300 dark:border-gray-700' placeholder={currentStrat === "0" ?'What lessons did you learn?':'What lessons did you learn? How did your trade differ from the strategy?'} >
                         </textarea>
                     </div>
                 </div>

@@ -93,9 +93,14 @@ const Journal = () => {
           {/* End of Chart and Trade List Containter */}
 
           {/* Trade Details Section */}
-          {showNewTradeDetail && <TradeDetails/>}
-
-
+          {showNewTradeDetail &&
+            <div>
+              <div className=' pl-2 h-fit mt-10 '>
+                <Header category="" title="Trade Details" />
+              </div>
+              <TradeDetails />
+            </div>
+          }
 
 
         </div>
