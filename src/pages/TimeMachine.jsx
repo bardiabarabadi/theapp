@@ -16,26 +16,26 @@ import { BsClockHistory } from "react-icons/bs";
 
 
 const TimeMachine = () => {
-  const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
+  const { currentColor, currentMode, newTimeMachine, setNewTimeMachine } = useStateContext();
 
-  const [ selectedStrat, setSelectedStrat ] = useState(1);
-  const [ editableStrat, setEditableStrat ] = useState(false);
+  const [ selectedTimeMachine, setSelectedTimeMachine ] = useState(1);
+  const [ editableTimeMachine, setEditableTimeMachine ] = useState(false);
 
-  const handleNewStrat = () => {
-    setEditableStrat(true);
-    setNewStrat(!newStrat);
+  const handleNewTimeMachine = () => {
+    setEditableTimeMachine(true);
+    setNewTimeMachine(!newTimeMachine);
   };
-  const setSelectedStrat_ = (ss) => {
-    setSelectedStrat (ss);
-    setEditableStrat(false);
-    setNewStrat(!newStrat);
+  const setSelectedTimeMachine_ = (ss) => {
+    setSelectedTimeMachine (ss);
+    setEditableTimeMachine(false);
+    setNewTimeMachine(!newTimeMachine);
   }
   return (
 
 
     <div className="mr-2 ml-2 mt-8 p-2  bg-gray-100 dark:bg-gray-950 rounded-3xl">
 
-      {!newStrat && (<NewTimeMachine selectedStrat={selectedStrat} editable_={editableStrat} />)}
+      {!newTimeMachine && (<NewTimeMachine selectedTimeMachine={selectedTimeMachine} editable_={editableTimeMachine} />)}
       <div className=' pl-2 h-fit '>
         <Header category="" title="Time Machines" />
       </div>
@@ -49,7 +49,7 @@ const TimeMachine = () => {
             if (item.Id !== '0')
               return (
                 <div>
-                  <a href='#' className="flex bg-white dark:text-gray-600 dark:bg-secondary-dark-bg max-w-800 h-fit p-8 pt-9 my-2 flex-col rounded-3xl  bg-no-repeat bg-cover bg-center hover:drop-shadow-xl" onClick={() => setSelectedStrat_(index)}>
+                  <a href='#' className="flex bg-white dark:text-gray-600 dark:bg-secondary-dark-bg max-w-800 h-fit p-8 pt-9 my-2 flex-col rounded-3xl  bg-no-repeat bg-cover bg-center hover:drop-shadow-xl" onClick={() => setSelectedTimeMachine_(index)}>
                     <div className="flex flex-row justify-start items-center" >
 
 
@@ -136,7 +136,7 @@ const TimeMachine = () => {
           })}
 
 
-          <button className='flex w-760 justify-center items-center gap-4 hover:drop-shadow-2xl min-h-400' onClick={() => handleNewStrat
+          <button className='flex w-760 justify-center items-center gap-4 hover:drop-shadow-2xl min-h-400' onClick={() => handleNewTimeMachine
             ()}>
             <div className='text-9xl rounded-full p-4 text-gray-50 bg-gray-400 dark:text-gray-900 dark:bg-gray-500'>
               <FiPlusCircle />

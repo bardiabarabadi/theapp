@@ -176,6 +176,7 @@ export const timeMachines = [
   initial_capital: '',
   max_leverage: '',
   playback_speed: '',
+  strategy_id: 0,
 },
 {
   Id: '1',
@@ -187,6 +188,7 @@ export const timeMachines = [
   initial_capital: '$100,000',
   max_leverage: '2x',
   playback_speed: '1:3600',
+  strategy_id: 3,
 },{
   Id: '2',
   name: 'Crypto China Miner\'s Crash',
@@ -197,6 +199,7 @@ export const timeMachines = [
   initial_capital: '$1,000',
   max_leverage: '125x',
   playback_speed: '1:1',
+  strategy_id: 2,
 },{
   Id: '3',
   name: 'COVID Crash',
@@ -207,6 +210,7 @@ export const timeMachines = [
   initial_capital: '$10,000',
   max_leverage: '5x',
   playback_speed: '1:1',
+  strategy_id: 1,
 },
 ]
 
