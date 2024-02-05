@@ -2,7 +2,7 @@ import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { useStateContext } from '../contexts/ContextProvider';
 import product8 from '../data/product8.jpg';
-import StratDetails from './StratDetails'
+import StrategyModules from './StrategyModules'
 import TimeMachineDetails from './TimeMachineDetails';
 import { strategies, timeMachines } from '../data/dummy';
 import { useNavigate } from "react-router-dom";

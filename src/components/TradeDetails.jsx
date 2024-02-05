@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import StratDetails from '../components/StratDetails';
+import StrategyModules from '../components/StrategyModules';
 import StarRating from '../components/StarRating.jsx';
 import { useStateContext } from '../contexts/ContextProvider';
 import { Header } from '../components';
@@ -84,7 +84,7 @@ const TradeDetails = () => {
                             <div className=" border-b-2 pb-5">
 
                                 <label className="dark:text-gray-50 font-semibold text-2xl">Trade Outcome:</label>
-                                <StratDetails
+                                <StrategyModules
                                     editable_={true}
                                 />
                             </div>
@@ -92,14 +92,14 @@ const TradeDetails = () => {
                             <div>
                                 <div className=" border-b-2 pb-5">
                                     <label className="dark:text-gray-50 font-semibold text-2xl">Strategy Criteria:</label>
-                                    <StratDetails
+                                    <StrategyModules
                                         editable_={false}
                                         selectedStrat_={currentStrat} 
                                     />
                                 </div>
                                 <div className=" border-b-2 pb-5 mt-4">
                                     <label className="dark:text-gray-50 font-semibold text-2xl">Trade Outcome:</label>
-                                    <StratDetails
+                                    <StrategyModules
                                         editable_={true}
                                     />
                                 </div>

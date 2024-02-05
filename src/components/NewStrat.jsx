@@ -2,7 +2,7 @@ import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { useStateContext } from '../contexts/ContextProvider';
 import product8 from '../data/product8.jpg';
-import StratDetails from './StratDetails'
+import StrategyModules from './StrategyModules'
 import { strategies } from '../data/dummy';
 
 const NewStrat = ({ editable_ = false, selectedStrat = 1 }) => {
@@ -70,7 +70,7 @@ const NewStrat = ({ editable_ = false, selectedStrat = 1 }) => {
 
             {/* Strategy Details */}
             <div>
-                <StratDetails
+                <StrategyModules
                     editable_={editable_}
                     selectedStrat_={selectedStrat}
                 />
