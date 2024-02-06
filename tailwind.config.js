@@ -57,10 +57,15 @@ module.exports = {
           400: '400px',
           300: '300px',
           200: '200px',
+          pop: '95vh',
+          popScroll: '70vh',
         },
         backgroundImage: {
           'hero-pattern':
             "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
+        },
+        "overflow-y":{
+          scroll: 'scroll',
         },
       },
     },

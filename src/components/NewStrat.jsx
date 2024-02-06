@@ -1,25 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { useStateContext } from '../contexts/ContextProvider';
 import product8 from '../data/product8.jpg';
-import StrategyModules from './StrategyModules'
+import StrategyModules from './StrategyDetails/StrategyModules'
 import { strategies } from '../data/dummy';
+import AiStrategyModules from './StrategyDetails/AiStrategyModules';
 
 const NewStrat = ({ editable_ = false, selectedStrat = 1 }) => {
-    const { currentColor, currentMode, newStrat, setNewStrat } = useStateContext();
-
-    const [showCustomSetup, setShowCustomSetup] = React.useState(false)
-    const [showCustomEntry, setShowCustomEntry] = React.useState(false)
-    const [showCustomExit, setShowCustomExit] = React.useState(false)
-    const onShowCustomSetup = () => setShowCustomSetup(!showCustomSetup)
-    const onShowCustomEntry = () => setShowCustomEntry(!showCustomEntry)
-    const onShowCustomExit = () => setShowCustomExit(!showCustomExit)
+    const { currentColor, newStrat, setNewStrat } = useStateContext();
 
     const handleNewStrat = () => setNewStrat(!newStrat);
 
 
+    const [useAi, setUseAi] = useState(false);
+    const toggleUseAi = () => setUseAi(!useAi);
+
     return (
-        <div className="flex bg-white dark:text-gray-600 dark:bg-secondary-dark-bg h-fit flex-col  rounded-3xl w-5/6 p-8 pt-9 mt-3  bg-no-repeat bg-cover bg-center hover:drop-shadow-xl border-8 border-gray-400 dark:border-gray-600" style={{ zIndex: '2000', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+        <div className="flex bg-white dark:text-gray-600 dark:bg-secondary-dark-bg h-fit max-h-pop flex-col  rounded-3xl w-5/6 p-8 pt-9 mt-3  bg-no-repeat bg-cover bg-center hover:drop-shadow-xl border-8 border-gray-400 dark:border-gray-600" style={{ zIndex: '2000', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
             <div className='flex flex-row justify-normal h-fit'>
                 < div className="flex flex-row justify-start items-center h-fit w-full" >
 
@@ -47,8 +44,33 @@ const NewStrat = ({ editable_ = false, selectedStrat = 1 }) => {
 
 
                 </div >
-                {/* close button */}
-                <div className='flex justify-self-end w-full justify-end self-start'>
+
+                <div className='flex justify-self-end w-1/5 justify-end self-start '>
+                    {/* AI button */}
+                    {editable_ ?
+                        <button
+                            type="button"
+                            onClick={() => { toggleUseAi() }}
+                            style={{
+                                '--color-1': 'deepskyblue',
+                                '--color-2': 'navy',
+                                background: `
+                          linear-gradient(
+                            170deg,
+                            var(--color-1),
+                            var(--color-2) 80%
+                          )
+                        `,
+                                color: `white`,
+                                borderRadius: "10px"
+                            }}
+                            className={`p-3 mx-5 w-full hover:drop-shadow-xl hover:bg-slate-700}`}
+                        >
+                            {useAi ? "Design Manually" : "Design with AI"}
+                        </button>
+                        : <></>}
+
+                    {/* close button */}
                     <button className='text-4xl hover:drop-shadow-lg' type='button' onClick={() => handleNewStrat()}>
                         <MdOutlineCancel />
                     </button>
@@ -69,12 +91,18 @@ const NewStrat = ({ editable_ = false, selectedStrat = 1 }) => {
             </div >
 
             {/* Strategy Details */}
-            <div>
-                <StrategyModules
-                    editable_={editable_}
-                    selectedStrat_={selectedStrat}
-                />
-            </div>
+            {useAi ?
+                <div>
+                    <AiStrategyModules />
+                </div>
+                :
+                <div>
+                    <StrategyModules
+                        editable_={editable_}
+                        selectedStrat_={selectedStrat}
+                    />
+                </div>
+            }
 
         </div >
 

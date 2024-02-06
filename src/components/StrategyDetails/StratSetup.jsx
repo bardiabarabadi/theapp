@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { exitTypes, targetMarkets, timeFrames } from '../../data/dummy';
-import { useStateContext } from '../../contexts/ContextProvider';
+import { targetMarkets, timeFrames } from '../../data/dummy';
 
 import { FaListCheck } from "react-icons/fa6";
 
@@ -14,18 +13,14 @@ import { strategies } from '../../data/dummy';
 const StratSetup = ({ editable_ = true, selectedStrat_ = 2 }) => {
 
     const [showCustomSetup, setShowCustomSetup] = React.useState(false)
-    const [showCustomEntry, setShowCustomEntry] = React.useState(false)
-    const [showCustomExit, setShowCustomExit] = React.useState(false)
     const onShowCustomSetup = () => setShowCustomSetup(!showCustomSetup)
-    const onShowCustomEntry = () => setShowCustomEntry(!showCustomEntry)
-    const onShowCustomExit = () => setShowCustomExit(!showCustomExit)
 
     const editable = editable_;
     const selectedStrat = selectedStrat_;
 
     return (
         // {/* Setup */}
-        <div className='flex flex-col w-1/3 border-1 rounded-xl py-4 mx-2'>
+        <div className='flex flex-col w-full border-1 rounded-xl py-4 mx-2'>
 
             {/* Setup Icon */}
             <div className='flex gap-4 items-center self-center justify-center'>
@@ -48,7 +43,7 @@ const StratSetup = ({ editable_ = true, selectedStrat_ = 2 }) => {
                     <p className='flex text-gray-700 w-1/3  dark:text-gray-50'> Target Market: </p>
 
                     {editable ?
-                        <select className="w-1/2 text-xl border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[0].Id}>
+                        <select className="w-1/2 text-md border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[0].Id}>
 
                             {targetMarkets.map((item) => {
                                 return (
@@ -73,7 +68,7 @@ const StratSetup = ({ editable_ = true, selectedStrat_ = 2 }) => {
 
                     <p className='flex text-gray-700 w-1/3 dark:text-gray-50'> Time Frame: </p>
                     {editable ?
-                        <select className="w-1/2 text-xl border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[0].Id}>
+                        <select className="w-1/2 text-md border-1 dark:bg-gray-900 border-gray-300 px-2 py-1 rounded-md" defaultValue={strategies[0].Id}>
 
                             {timeFrames.map((item) => {
                                 return (

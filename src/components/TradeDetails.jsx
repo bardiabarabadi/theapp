@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-import StrategyModules from '../components/StrategyModules';
+import StrategyModules from '../components/StrategyDetails/StrategyModules';
 import StarRating from '../components/StarRating.jsx';
 import { useStateContext } from '../contexts/ContextProvider';
-import { Header } from '../components';
 
 import { FaRegSave } from "react-icons/fa";
 import { MdOutlineCancel } from 'react-icons/md';
@@ -12,18 +11,10 @@ import { strategies } from '../data/dummy';
 import trade_chart_dark from '../data/trade_chart_dark.png';
 import trade_chart_light from '../data/trade_chart_light.png';
 
-import { FiPlusCircle } from "react-icons/fi";
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-
-
-
-
 
 const TradeDetails = () => {
 
     const { currentColor, currentMode, newStrat, setNewStrat,showNewTradeDetail, setShowNewTradeDetail, currentStrat, setCurrentStrat } = useStateContext();
-
-
 
     return (
         <div>

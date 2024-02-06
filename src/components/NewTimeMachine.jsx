@@ -2,23 +2,13 @@ import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { useStateContext } from '../contexts/ContextProvider';
 import product8 from '../data/product8.jpg';
-import StrategyModules from './StrategyModules'
 import TimeMachineDetails from './TimeMachineDetails';
 import { strategies, timeMachines } from '../data/dummy';
 import { useNavigate } from "react-router-dom";
 
-
-
-
 const NewRimeMachine = ({ editable_ = false, selectedTimeMachine = 1 }) => {
-    const { currentColor, currentMode, newTimeMachine, setNewTimeMachine, currentTimeMachine, setCurrentTimeMachine, currentStrat, setCurrentStrat } = useStateContext();
+    const { currentColor, newTimeMachine, setNewTimeMachine, currentTimeMachine, setCurrentTimeMachine, setCurrentStrat } = useStateContext();
 
-    const [showCustomSetup, setShowCustomSetup] = React.useState(false)
-    const [showCustomEntry, setShowCustomEntry] = React.useState(false)
-    const [showCustomExit, setShowCustomExit] = React.useState(false)
-    const onShowCustomSetup = () => setShowCustomSetup(!showCustomSetup)
-    const onShowCustomEntry = () => setShowCustomEntry(!showCustomEntry)
-    const onShowCustomExit = () => setShowCustomExit(!showCustomExit)
 
     const handleNewTimeMachine = () => setNewTimeMachine(!newTimeMachine);
 
