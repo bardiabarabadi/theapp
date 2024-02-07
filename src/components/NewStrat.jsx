@@ -5,6 +5,7 @@ import product8 from '../data/product8.jpg';
 import StrategyModules from './StrategyDetails/StrategyModules'
 import { strategies } from '../data/dummy';
 import AiStrategyModules from './StrategyDetails/AiStrategyModules';
+import { FaRegSave } from 'react-icons/fa';
 
 const NewStrat = ({ editable_ = false, selectedStrat = 1 }) => {
     const { currentColor, newStrat, setNewStrat } = useStateContext();
@@ -64,11 +65,19 @@ const NewStrat = ({ editable_ = false, selectedStrat = 1 }) => {
                                 color: `white`,
                                 borderRadius: "10px"
                             }}
-                            className={`p-3 mx-5 w-full hover:drop-shadow-xl hover:bg-slate-700}`}
+                            className={`p-3 mx-3 w-full hover:drop-shadow-xl hover:bg-slate-700}`}
                         >
                             {useAi ? "Design Manually" : "Design with AI"}
                         </button>
                         : <></>}
+
+
+                    {/* Save Button */}
+                    <button className='text-4xl hover:drop-shadow-lg mr-2' type='button' onClick={() => handleNewStrat()}>
+                        <FaRegSave />
+                    </button>
+
+
 
                     {/* close button */}
                     <button className='text-4xl hover:drop-shadow-lg' type='button' onClick={() => handleNewStrat()}>

@@ -43,7 +43,8 @@ module.exports = {
           1000: '1000px'
         },
         maxWidth: {
-          800: '800px'
+          800: '800px',
+          chat: '66.666667%',
         },
         minHeight: {
           590: '590px',
@@ -51,6 +52,9 @@ module.exports = {
           300: '300px',
           200: '200px',
           100: '100px',
+          50: '50px',
+          75: '75px',
+          25: '25px',
         },
         maxHeight: {
           590: '590px',
